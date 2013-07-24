@@ -1,0 +1,28 @@
+{
+	"name" : "bread/networking",
+	"description" : "Bread networking library",
+	"type" : "library",
+	"authors" : [{
+			"name" : "Giovanni Lovato",
+			"email" : "heruan@aldu.net"
+		}
+	],
+	"keywords" : [
+		"bread",
+		"networking"
+	],
+	"homepage" : "https://github.com/breadphp/networking",
+	"license" : [
+		"CC-BY-3.0"
+	],
+	"require" : {
+		"php" : ">=5.4",
+		"bread/promises" : "~1.0",
+		"bread/streaming" : "~1.0"
+	},
+	"autoload" : {
+		"psr-0" : {
+			"Bread\\Networking" : "src"
+		}
+	}
+}
