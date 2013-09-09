@@ -47,6 +47,7 @@ class Server extends Event\Emitter implements Interfaces\Server
             }
             $this->handleConnection($newSocket);
         });
+        return $this;
     }
 
     public function handleConnection($socket)
