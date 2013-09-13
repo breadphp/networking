@@ -43,7 +43,12 @@ class Connection extends Stream implements Interfaces\Connection
 
     public function getRemoteAddress()
     {
-        return $this->parseAddress(stream_socket_get_name($this->stream, true));
+        return $this->parseAddress(stream_socket_get_name($this->stream, true))[0];
+    }
+    
+    public function getRemotePort()
+    {
+        return $this->parseAddress(stream_socket_get_name($this->stream, true))[1];
     }
 
     public function isSecure()
@@ -68,6 +73,8 @@ class Connection extends Stream implements Interfaces\Connection
 
     private function parseAddress($address)
     {
-        return trim(substr($address, 0, strrpos($address, ':')), '[]');
+        return array_map(function($part) {
+            return trim($part, '[]');
+        }, explode(':', $address)) + array(null, null);
     }
 }
