@@ -21,8 +21,8 @@
 		"bread/streaming" : "~1.0"
 	},
 	"autoload" : {
-		"psr-0" : {
-			"Bread\\Networking" : "src"
+		"psr-4" : {
+			"Bread\\Networking\\" : "src"
 		}
 	}
 }
