@@ -35,7 +35,18 @@ class SecureConnection extends Connection
             $this->emit('connection', array($this));
         }
 
-        parent::handleData($stream);
+        //return parent::handleData($stream);
+        while ('' === $data = fread($stream, $this->bufferSize)) {
+            // FIXME Encrypted streams report data too early, wait the data to be decrypted
+        }
+        if ('' === $data || false === $data) {
+            $this->end();
+        } else {
+            $this->emit('data', array(
+                $data,
+                $this
+            ));
+        }
     }
 
     public function isSecure()
