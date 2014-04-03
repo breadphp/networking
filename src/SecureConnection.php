@@ -37,5 +37,10 @@ class SecureConnection extends Connection
 
         parent::handleData($stream);
     }
+
+    public function isSecure()
+    {
+        return $this->secure;
+    }
 }
 
